@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "outDir": "./build",
+    "removeComments": true,
+    "newLine": "lf",
+    "noEmitOnError": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    "baseUrl": "./src",            // Set the base directory to 'src'
+    "paths": {
+      "*": ["*"]                  // Allows imports relative to 'src'
+    }
+  },
+  "include": [
+    "src/**/*.ts"                  // Include all TypeScript files in the 'src' directory
+  ],
+  "exclude": [
+    "jest.config.ts",
+    "__tests__"
+  ]
+}
