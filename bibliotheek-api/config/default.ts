@@ -1,5 +1,5 @@
 export default {
-  port: 3000,
+  port: 9000,
   log: {
     level: 'silly',
     disabled: false
@@ -18,8 +18,8 @@ export default {
     jwt: {
       audience: 'http://localhost:3000',
       issuer: 'http://localhost:3000',
-      expirationInterval: '1h',
-      secret: 'yourSecretKey'
+      expirationInterval: '1h'
+      // secret niet in default!
     }
   }
 };

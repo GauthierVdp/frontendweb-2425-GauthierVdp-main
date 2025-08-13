@@ -3,9 +3,9 @@ export default {
   port: 'PORT',
   auth: {
     jwt: {
-      secret: 'JWT_SECRET',
-      audience: 'JWT_AUDIENCE',
-      issuer: 'JWT_ISSUER'
+  secret: 'AUTH_JWT_SECRET',
+  audience: 'JWT_AUDIENCE',
+  issuer: 'JWT_ISSUER'
     }
   }
 };

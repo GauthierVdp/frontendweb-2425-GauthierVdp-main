@@ -1,7 +1,9 @@
+
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import { Server as HttpServer } from 'http';
-
+import config from 'config'; // 👈
+import { getLogger } from './core/logging'; // 👈
 import { initializeData, shutdownData } from './data';
 import installMiddlewares from './core/installMiddlewares';
 import installRest from './rest';
@@ -27,13 +29,18 @@ export default async function createServer(): Promise<Server> {
 
   let httpServer: HttpServer;
 
+  const PORT = config.get<number>('port'); // 👈
+
   return {
     getApp() {
       return app;
     },
     async start() {
-      httpServer = app.listen(3000, () => {
-        console.log('Server is listening on port 3000');
+      await new Promise<void>((resolve) => {
+        httpServer = app.listen(PORT, () => {
+          getLogger().info(`🚀 Server listening on http://localhost:${PORT}`); // 👈
+          resolve();
+        });
       });
     },
     async stop() {
