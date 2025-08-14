@@ -4,38 +4,38 @@
 > Lees <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet> om te weten hoe een Markdown-bestand opgemaakt moet worden.
 > Verwijder alle instructies (lijnen die starten met >).
 
-- Student: Vandeputte Gauthier k
+- Student: Vandeputte Gauthier 
 - Studentennummer: 202397621
 - E-mailadres: <mailto:gauthier.vandeputte@student.hogent.be>
 - Demo: ([https://hogent.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2ca8d023-a837-4677-a188-b24b00f8da64](https://hogent.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e0d4c9d6-a5be-4a36-8e65-b24c01655da8))
-- GitHub-repository:([https://github.com/HOGENT-frontendweb/frontendweb-2425-GauthierVdp](https://github.com/HOGENT-frontendweb/frontendweb-2425-GauthierVdp.git))
+- GitHub-repository:([https://github.com/HOGENT-frontendweb/frontendweb-2425-GauthierVdp](https://github.com/GauthierVdp/frontendweb-2425-GauthierVdp-main.git))
 
 
 ## Projectbeschrijving
 
-Ik heb een backend van een bibiliotheek applicatie gamaakt waar leden hun ontleende boekene, kunnen zien, de datum van ontlening, wie de autheurs zijn en welk genre.
+Als project heb ik een bibliotheek backend gemaakt waar je alle leden kan op zien, boeken, schrijvers en wie welke boeken heeft uigeleend op welke dag.
 
 ## API calls
 
 ### **Boeken**
 | Methode | Endpoint             | Beschrijving                      |
 |---------|----------------------|-----------------------------------|
-| GET     | /api/boeken           | Haal alle boeken op                |
-| GET     | /api/boeken/:id       | Haal een boek op ID op             |
-| POST    | /api/boeken           | Maak een nieuw boek aan            |
-| PUT     | /api/boeken/:id       | Werk een boek bij                  |
-| DELETE  | /api/boeken/:id       | Verwijder een boek                 |
+| GET     | /api/books           | Haal alle boeken op                |
+| GET     | /api/books/:id       | Haal een boek op ID op             |
+| POST    | /api/books           | Maak een nieuw boek aan            |
+| PUT     | /api/books/:id       | Werk een boek bij                  |
+| DELETE  | /api/books/:id       | Verwijder een boek                 |
 
 ---
 
 ### **Schrijvers**
 | Methode | Endpoint             | Beschrijving                      |
 |---------|----------------------|-----------------------------------|
-| GET     | /api/schrijvers       | Haal alle schrijvers op            |
-| GET     | /api/schrijvers/:id   | Haal een schrijver op ID op        |
-| POST    | /api/schrijvers       | Maak een nieuwe schrijver aan      |
-| PUT     | /api/schrijvers/:id   | Werk een schrijver bij             |
-| DELETE  | /api/schrijvers/:id   | Verwijder een schrijver            |
+| GET     | /api/authors       | Haal alle schrijvers op            |
+| GET     | /api/authors/:id   | Haal een schrijver op ID op        |
+| POST    | /api/authors       | Maak een nieuwe schrijver aan      |
+| PUT     | /api/authors/:id   | Werk een schrijver bij             |
+| DELETE  | /api/authors/:id   | Verwijder een schrijver            |
 
 ---
 
@@ -53,22 +53,22 @@ Ik heb een backend van een bibiliotheek applicatie gamaakt waar leden hun ontlee
 ### **Gebruikers**
 | Methode | Endpoint             | Beschrijving                      |
 |---------|----------------------|-----------------------------------|
-| GET     | /api/gebruikers       | Haal alle gebruikers op            |
-| GET     | /api/gebruikers/:id   | Haal een gebruiker op ID op        |
-| POST    | /api/gebruikers       | Maak een nieuwe gebruiker aan      |
-| PUT     | /api/gebruikers/:id   | Werk een gebruiker bij             |
-| DELETE  | /api/gebruikers/:id   | Verwijder een gebruiker            |
+| GET     | /api/members       | Haal alle gebruikers op            |
+| GET     | /api/members/:id   | Haal een gebruiker op ID op        |
+| POST    | /api/members       | Maak een nieuwe gebruiker aan      |
+| PUT     | /api/members/:id   | Werk een gebruiker bij             |
+| DELETE  | /api/members/:id   | Verwijder een gebruiker            |
 
 ---
 
 ### **Uitleentransacties**
 | Methode | Endpoint             | Beschrijving                      |
 |---------|----------------------|-----------------------------------|
-| GET     | /api/uitleentransacties | Haal alle uitleentransacties op  |
-| GET     | /api/uitleentransacties/:id | Haal een uitleentransactie op ID op |
-| POST    | /api/uitleentransacties | Maak een nieuwe uitleentransactie aan |
-| PUT     | /api/uitleentransacties/:id | Werk een uitleentransactie bij |
-| DELETE  | /api/uitleentransacties/:id | Verwijder een uitleentransactie |
+| GET     | /api/borrowRecords | Haal alle uitleentransacties op  |
+| GET     | /api/borrowRecords/:id | Haal een uitleentransactie op ID op |
+| POST    | /api/borrowRecords | Maak een nieuwe uitleentransactie aan |
+| PUT     | /api/borrowRecords/:id | Werk een uitleentransactie bij |
+| DELETE  | /api/borrowRecords/:id | Verwijder een uitleentransactie |
 
 ### Gebruikers
 
@@ -114,7 +114,7 @@ Ik heb een backend van een bibiliotheek applicatie gamaakt waar leden hun ontlee
 (testen gemaakt met macha)
 - [x] maakt gebruik van de laatste ES-features (async/await, object destructuring, spread operator...)
 - [x] de applicatie start zonder problemen op gebruikmakend van de instructies in de README
-- [ ] de API draait online
+- [x] de API draait online
 - [x] duidelijke en volledige README.md
 - [x] er werden voldoende (kleine) commits gemaakt
 - [x] volledig en tijdig ingediend dossier
