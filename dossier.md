@@ -7,7 +7,7 @@
 - Student: Vandeputte Gauthier 
 - Studentennummer: 202397621
 - E-mailadres: <mailto:gauthier.vandeputte@student.hogent.be>
-- Demo: ([https://hogent.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2ca8d023-a837-4677-a188-b24b00f8da64](https://hogent.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e0d4c9d6-a5be-4a36-8e65-b24c01655da8))
+- Demo: ([https://hogent.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=50b901c7-3b25-43ec-bc55-b33a00c29ef7](https://hogent.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=50b901c7-3b25-43ec-bc55-b33a00c29ef7))
 - GitHub-repository:([https://github.com/HOGENT-frontendweb/frontendweb-2425-GauthierVdp](https://github.com/GauthierVdp/frontendweb-2425-GauthierVdp-main.git))
 
 

@@ -19,7 +19,6 @@ describe('Book API', function () {
     await server.start();
     httpServer = server.getApp().callback();
 
-    // Clean up and create an author and genre for the book
     await prisma.book.deleteMany({ where: { title: 'Test Book' } });
     await prisma.author.deleteMany({ where: { name: 'Test Author' } });
     await prisma.genre.deleteMany({ where: { name: 'Test Genre' } });
@@ -29,7 +28,6 @@ describe('Book API', function () {
     authorId = author.id;
     genreId = genre.id;
 
-    // Register and login to get a token
     await request(httpServer)
       .post('/api/sessions/register')
       .send({

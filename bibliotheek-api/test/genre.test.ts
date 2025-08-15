@@ -16,7 +16,6 @@ describe('Genre API', function (this: Mocha.Suite) {
     await server.start();
     httpServer = server.getApp().callback();
 
-    // Zorg dat er genres zijn in de database
     await prisma.genre.deleteMany({});
     await prisma.genre.createMany({
       data: [
@@ -25,7 +24,6 @@ describe('Genre API', function (this: Mocha.Suite) {
       ],
     });
 
-    // Register en login om een token te krijgen
     await request(httpServer)
       .post('/api/sessions/register')
       .send({
@@ -58,7 +56,6 @@ describe('Genre API', function (this: Mocha.Suite) {
       expect(res.status).to.equal(200);
       expect(res.body.items).to.be.an('array');
       expect(res.body.items.length).to.equal(genresInDb.length);
-      // Check that all genres from DB are present in response
       const namesFromDb = genresInDb.map(g => g.name).sort();
       const namesFromApi = res.body.items.map((g: any) => g.name).sort();
       expect(namesFromApi).to.deep.equal(namesFromDb);
@@ -85,7 +82,6 @@ describe('Genre API', function (this: Mocha.Suite) {
         .send({ name: 'Horror' });
       expect(res.status).to.equal(201);
       expect(res.body.name).to.equal('Horror');
-      // Check it is in the database
       const genre = await prisma.genre.findFirst({ where: { name: 'Horror' } });
       expect(genre).to.not.be.null;
     });
@@ -101,7 +97,6 @@ describe('Genre API', function (this: Mocha.Suite) {
         .send({ name: 'Epic Fantasy' });
       expect(res.status).to.equal(200);
       expect(res.body.name).to.equal('Epic Fantasy');
-      // Check in database
       const updated = await prisma.genre.findUnique({ where: { id: genre!.id } });
       expect(updated!.name).to.equal('Epic Fantasy');
     });
@@ -116,7 +111,6 @@ describe('Genre API', function (this: Mocha.Suite) {
         .set('Authorization', `Bearer ${token}`);
       expect(res.status).to.equal(200);
       expect(res.body.message).to.equal('Genre deleted successfully');
-      // Check it is gone
       const deleted = await prisma.genre.findUnique({ where: { id: genre!.id } });
       expect(deleted).to.be.null;
     });

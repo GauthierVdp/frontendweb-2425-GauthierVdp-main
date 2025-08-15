@@ -1,4 +1,3 @@
-// src/service/genre.ts
 import { prisma } from '../data';
 import ServiceError from '../core/serviceError';
 import handleDBError from './_handleDBError';

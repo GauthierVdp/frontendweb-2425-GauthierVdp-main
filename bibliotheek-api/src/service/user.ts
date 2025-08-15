@@ -67,7 +67,6 @@ export const login = async (
   const user = await prisma.user.findUnique({ where: { email } });
 
   if (!user) {
-    // DO NOT expose we don't know the user
     throw ServiceError.unauthorized(
       'The given email and password do not match',
     );
@@ -76,7 +75,6 @@ export const login = async (
   const passwordValid = await verifyPassword(password, user.password_hash);
 
   if (!passwordValid) {
-    // DO NOT expose we know the user but an invalid password was given
     throw ServiceError.unauthorized(
       'The given email and password do not match',
     );

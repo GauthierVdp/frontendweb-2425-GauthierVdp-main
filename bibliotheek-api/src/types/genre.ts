@@ -1,4 +1,3 @@
-// genre.ts
 import type { Entity, ListResponse } from './common';
 
 export interface Genre extends Entity {

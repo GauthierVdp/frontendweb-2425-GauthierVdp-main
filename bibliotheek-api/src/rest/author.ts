@@ -14,9 +14,7 @@ import type {
 } from '../types/author';
 import type { IdParams } from '../types/common';
 
-/**
- * Author routes
- */
+
 
 const getAllAuthors = async (ctx: KoaContext<GetAllAuthorsResponse>) => {
   const authors = await authorService.getAll();
@@ -75,7 +73,6 @@ export default (parent: KoaRouter) => {
     prefix: '/authors',
   });
 
-  // Require authentication for all author routes
 
   router.get('/', validate(getAllAuthors.validationScheme), getAllAuthors);
   router.get('/:id', validate(getAuthorById.validationScheme), getAuthorById);

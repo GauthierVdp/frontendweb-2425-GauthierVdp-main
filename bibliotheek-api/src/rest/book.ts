@@ -13,9 +13,7 @@ import type {
 } from '../types/book';
 import type { IdParams } from '../types/common';
 
-/**
- * Book routes
- */
+
 
 const getAllBooks = async (ctx: KoaContext<GetAllBooksResponse>) => {
   const books = await bookService.getAll();

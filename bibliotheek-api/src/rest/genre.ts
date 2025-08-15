@@ -1,4 +1,3 @@
-// src/rest/genre.ts
 import Router from '@koa/router';
 import Joi from 'joi';
 import * as genreService from '../service/genre';
@@ -15,9 +14,7 @@ import type {
 } from '../types/genre';
 import type { IdParams } from '../types/common';
 
-/**
- * Genre routes
- */
+
 
 const getAllGenres = async (ctx: KoaContext<GetAllGenresResponse>) => {
   const genres = await genreService.getAll();
@@ -75,7 +72,6 @@ export default (parent: KoaRouter) => {
     prefix: '/genres',
   });
 
-  // Require authentication for all genre routes
 
   router.get('/', validate(getAllGenres.validationScheme), getAllGenres);
   router.get('/:id', validate(getGenreById.validationScheme), getGenreById);

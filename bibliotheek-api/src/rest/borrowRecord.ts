@@ -14,9 +14,7 @@ import type {
 } from '../types/borrowRecord';
 import type { IdParams } from '../types/common';
 
-/**
- * BorrowRecord routes
- */
+
 
 const getAllBorrowRecords = async (ctx: KoaContext<GetAllBorrowRecordsResponse>) => {
   const borrowRecords = await borrowRecordService.getAll();

@@ -4,7 +4,6 @@ const handleDBError = (error: any) => {
   const { code = '', message } = error;
 
   if (code === 'P2002') {
-    // Unique constraint violation
     switch (true) {
       case message.includes('idx_member_email_unique'):
         throw ServiceError.validationFailed('A member with this email already exists');
@@ -18,7 +17,6 @@ const handleDBError = (error: any) => {
   }
 
   if (code === 'P2025') {
-    // Record not found
     switch (true) {
       case message.includes('fk_borrowrecord_book'):
         throw ServiceError.notFound('This book does not exist');
@@ -38,7 +36,6 @@ const handleDBError = (error: any) => {
   }
 
   if (code === 'P2003') {
-    // Foreign key constraint fails
     switch (true) {
       case message.includes('bookId'):
         throw ServiceError.conflict('This book is still linked to borrow records');
@@ -49,7 +46,6 @@ const handleDBError = (error: any) => {
     }
   }
 
-  // Unknown error
   throw error;
 };
 

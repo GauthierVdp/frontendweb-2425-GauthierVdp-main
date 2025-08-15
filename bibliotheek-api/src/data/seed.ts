@@ -1,21 +1,18 @@
 import { PrismaClient } from '@prisma/client';
-import { hashPassword } from '../core/password'; // Ensure the path is correct
-import Role from '../core/roles'; // Ensure the path is correct to the roles file
+import { hashPassword } from '../core/password'; 
+import Role from '../core/roles'; 
 
 const prisma = new PrismaClient();
 
 export async function seedDatabase() {
-  // Clear existing data
   await prisma.borrowrecord.deleteMany({});
   await prisma.book.deleteMany({});
   await prisma.member.deleteMany({});
   await prisma.genre.deleteMany({});
   await prisma.author.deleteMany({});
 
-  // Hash a test password
   const passwordHash = await hashPassword('12345678');
 
-  // Seed authors
   await prisma.author.createMany({
     data: [
       { name: 'J.K. Rowling' },
@@ -24,7 +21,6 @@ export async function seedDatabase() {
     ],
   });
 
-  // Seed genres
   await prisma.genre.createMany({
     data: [
       { name: 'Fantasy' },
@@ -32,7 +28,6 @@ export async function seedDatabase() {
     ],
   });
 
-  // Ensure authors and genres are created before proceeding
   const authors = await prisma.author.findMany();
   const genres = await prisma.genre.findMany();
 
@@ -47,7 +42,6 @@ export async function seedDatabase() {
     throw new Error('Required authors or genres not found');
   }
 
-  // Add members as users with roles and hashed password
   const members = [
     {
       name: 'Alice',
@@ -67,7 +61,6 @@ export async function seedDatabase() {
       password_hash: passwordHash,
       roles: { set: [Role.ADMIN] },
     },
-    // Ensure unique emails
     {
       name: 'UniqueUser',
       email: `unique${Date.now()}@example.com`,
@@ -78,13 +71,12 @@ export async function seedDatabase() {
 
   await prisma.member.createMany({
     data: members,
-    skipDuplicates: true, // Skip duplicates to avoid unique constraint errors
+    skipDuplicates: true, 
   });
 
-  // Retrieve newly created records
+
   const createdMembers = await prisma.member.findMany();
 
-  // Create books with relations
   const harryPotter = await prisma.book.create({
     data: {
       title: "Harry Potter and the Philosopher's Stone",
@@ -121,7 +113,6 @@ export async function seedDatabase() {
     },
   });
 
-  // Find Alice, Bob, and Admin by email (no type assertion)
   const alice = createdMembers.find((m) => m.email === 'alice@example.com');
   const bob = createdMembers.find((m) => m.email === 'bob@example.com');
   const admin = createdMembers.find((m) => m.email === 'admin@example.com');
@@ -130,7 +121,6 @@ export async function seedDatabase() {
     throw new Error('Required members not found');
   }
 
-  // Seed BorrowRecords
   await prisma.borrowrecord.createMany({
     data: [
       {
@@ -141,7 +131,7 @@ export async function seedDatabase() {
       },
       {
         borrowDate: new Date(2024, 1, 5),
-        returnDate: null, // not yet returned
+        returnDate: null, 
         bookId: lotr.id,
         memberId: alice.id,
       },

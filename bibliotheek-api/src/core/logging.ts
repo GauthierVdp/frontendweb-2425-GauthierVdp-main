@@ -21,7 +21,6 @@ const loggerFormat = () => {
       return `${formatMessage(rest)}\n\n${error.stack}\n`;
     }
 
-    // If `error` is not an instance of Error, just fall back to message formatting
     return formatMessage(rest);
   };
 

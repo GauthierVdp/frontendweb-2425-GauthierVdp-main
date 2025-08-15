@@ -10,9 +10,7 @@ import type {
 } from '../types/member';
 import type { IdParams } from '../types/common';
 
-/**
- * Member routes
- */
+
 
 const getAllMembers = async (ctx: KoaContext<GetAllMembersResponse>) => {
   const members = await memberService.getAll();
@@ -75,17 +73,13 @@ getMemberById.validationScheme = {
   }),
 };
 
-/**
- * Install member routes
- */
+
 export default function installMemberRouter(parent: KoaRouter) {
   const router = new Router<AppState, AppContext>({ prefix: '/members' });
 
-  // Public routes (no authentication)
   router.post('/register', registerMember);
   router.post('/login', loginMember);
 
-  // Protected routes (add authentication middleware if needed)
   router.get('/', getAllMembers);
   router.get('/:id', getMemberById);
 

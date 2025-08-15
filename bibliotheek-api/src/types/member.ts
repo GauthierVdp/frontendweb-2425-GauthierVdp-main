@@ -39,7 +39,6 @@ export interface LoginResponse {
   token: string;
 }
 
-// Add this interface if it's missing
 export interface GetUserRequest {
   id: number | 'me';
 }

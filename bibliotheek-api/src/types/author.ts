@@ -1,4 +1,3 @@
-// author.ts
 import type { Entity, ListResponse } from './common';
 
 export interface Author extends Entity {

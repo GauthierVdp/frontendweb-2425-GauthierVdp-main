@@ -17,7 +17,6 @@ describe('Author API', function (this: Mocha.Suite) {
     await server.start();
     httpServer = server.getApp().callback();
 
-    // Clean authors and add some
     await prisma.author.deleteMany({});
     await prisma.author.createMany({
       data: [
@@ -27,7 +26,6 @@ describe('Author API', function (this: Mocha.Suite) {
       ],
     });
 
-    // Register and log in to get a token
     await request(httpServer)
       .post('/api/sessions/register')
       .send({
@@ -86,7 +84,6 @@ describe('Author API', function (this: Mocha.Suite) {
         .send({ name: 'George Orwell' });
       expect(res.status).to.equal(201);
       expect(res.body.name).to.equal('George Orwell');
-      // Check in DB
       const author = await prisma.author.findFirst({ where: { name: 'George Orwell' } });
       expect(author).to.not.be.null;
     });
@@ -102,7 +99,6 @@ describe('Author API', function (this: Mocha.Suite) {
         .send({ name: 'Joanne Rowling' });
       expect(res.status).to.equal(200);
       expect(res.body.name).to.equal('Joanne Rowling');
-      // Check in DB
       const updated = await prisma.author.findUnique({ where: { id: author!.id } });
       expect(updated!.name).to.equal('Joanne Rowling');
     });
@@ -117,7 +113,6 @@ describe('Author API', function (this: Mocha.Suite) {
         .set('Authorization', `Bearer ${token}`);
       expect(res.status).to.equal(200);
       expect(res.body.message).to.equal('Author deleted successfully');
-      // Check in DB
       const deleted = await prisma.author.findUnique({ where: { id: author!.id } });
       expect(deleted).to.be.null;
     });

@@ -7,7 +7,6 @@ import type {
   BookUpdateInput
 } from '../types/book';
 
-// Helper to map Prisma's author/genre to API's authors/genres
 function mapPrismaBookToBook(prismaBook: any): Book {
   return {
     id: prismaBook.id,
@@ -53,7 +52,6 @@ export const create = async (data: BookCreateInput): Promise<Book> => {
   }
   const { title, authorIds, genreIds } = data;
 
-  // Check if all authors exist
   const authorsCount = await prisma.author.count({
     where: {
       id: { in: authorIds }
@@ -64,7 +62,6 @@ export const create = async (data: BookCreateInput): Promise<Book> => {
     throw new Error("One or more authors do not exist");
   }
 
-  // Check if all genres exist
   const genresCount = await prisma.genre.count({
     where: {
       id: { in: genreIds }
@@ -101,7 +98,6 @@ export const updateById = async (id: number, changes: BookUpdateInput): Promise<
   const { title, authorIds, genreIds } = changes;
 
   try {
-    // Build update object dynamically
     const data: any = {};
     if (title !== undefined) data.title = title;
     if (authorIds !== undefined) {

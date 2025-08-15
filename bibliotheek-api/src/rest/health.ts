@@ -5,9 +5,7 @@ import type { PingResponse, VersionResponse } from '../types/health';
 import validate from '../core/validation';
 import type { AppContext, AppState } from '../types/xkoa';
 
-/**
- * Health check routes
- */
+
 
 const ping = async (ctx: KoaContext<PingResponse>) => {
   ctx.status = 200;

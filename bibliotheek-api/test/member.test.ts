@@ -16,7 +16,6 @@ describe('Authentication API', function () {
     server = await createServer();
     await server.start();
     httpServer = server.getApp().callback();
-    // Clean up any previous test user
     await prisma.member.deleteMany({ where: { email: testEmail } });
   });
 
